@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Logs and artifacts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+artifacts/
+coverage/
+
+# OS/editor junk
+.DS_Store
+*.swp
