@@ -1,0 +1,117 @@
+{
+  "2026-03-04": {
+    "Breakfast": [
+      {
+        "id": "entry-1772674075792-6v2yiy",
+        "foodId": "ground-beef-88-12-costco-4oz",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772674084520-zhbhvl",
+        "foodId": "carb-balance-flour-tortilla",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772674088532-r2og87",
+        "foodId": "kraft-single-american-1-slice-19g",
+        "quantity": 1
+      }
+    ],
+    "Lunch": [
+      {
+        "id": "entry-1772674104102-boo0x5",
+        "foodId": "tortellini-w-steak",
+        "quantity": 1
+      }
+    ],
+    "Dinner": [
+      {
+        "id": "entry-1772674113654-f03vtt",
+        "foodId": "ground-beef-88-12-costco-4oz",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1772674126298-rhu1d3",
+        "foodId": "martins-potato-roll-1-roll-53g",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772674132453-fhnyjf",
+        "foodId": "kraft-single-american-1-slice-19g",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1772674140809-4r0voe",
+        "foodId": "yukon-gold-potatoes-cooked-300g",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772674211499-7w8bw3",
+        "foodId": "kerrygold-butter-1-tbsp",
+        "quantity": 0.5
+      }
+    ],
+    "Snack": [
+      {
+        "id": "entry-1772674091067-4w9pa5",
+        "foodId": "costco-chocolate-chip-cookie-1-cookie",
+        "quantity": 3
+      }
+    ]
+  },
+  "2026-03-05": {
+    "Breakfast": [
+      {
+        "id": "entry-1772755410426-q3eu48",
+        "foodId": "quaker-oats-dry-1-2-cup",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1772755425465-lflsj5",
+        "foodId": "mixed-berries-1-2-cup",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772755575975-do96ue",
+        "foodId": "nonfat-greek-yogurt-vanilla-great-value",
+        "quantity": 1
+      }
+    ],
+    "Lunch": [
+      {
+        "id": "entry-1772763500162-9svsx5",
+        "foodId": "costco-rotisserie-chicken-85g",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772763507643-5gqeuw",
+        "foodId": "jasmine-rice-142g",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772763516922-zva3f8",
+        "foodId": "costco-guacamole-2-tbsp",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1772763523431-pfku7n",
+        "foodId": "costco-mexican-cheese-28g",
+        "quantity": 1
+      }
+    ],
+    "Dinner": [
+      {
+        "foodId": "healthy-meals-direct-protein-plus-baked-ziti-meatballs-1-meal",
+        "quantity": 1,
+        "id": "entry-1772763368256-jcukeq"
+      }
+    ],
+    "Snack": [
+      {
+        "id": "entry-1772763398162-6au391",
+        "foodId": "nurri-ultra-filtered-milkshake-vanilla-11fl-oz",
+        "quantity": 1
+      }
+    ]
+  }
+}

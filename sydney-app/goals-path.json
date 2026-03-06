@@ -1,0 +1,32 @@
+{
+  "paths": [
+    {
+      "id": "business-001",
+      "name": "AI Fitness Business v1",
+      "description": "From zero to first paying customers.",
+      "steps": [
+        {
+          "id": "step-01",
+          "title": "Automate Nutrition App",
+          "detail": "Define who you serve, what problem you solve, and your core promise.",
+          "status": "todo",
+          "order": 1
+        },
+        {
+          "id": "step-02",
+          "title": "Create lead magnet (carousel + PDF)",
+          "detail": "Design a simple lead magnet that speaks to your avatar's biggest pain.",
+          "status": "todo",
+          "order": 2
+        },
+        {
+          "id": "step-03",
+          "title": "Set up simple funnel",
+          "detail": "Landing page + email capture + basic follow-up sequence.",
+          "status": "todo",
+          "order": 3
+        }
+      ]
+    }
+  ]
+}

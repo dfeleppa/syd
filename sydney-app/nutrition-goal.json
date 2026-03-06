@@ -1,0 +1,11 @@
+{
+  "goal": "maintenance",
+  "activity": "moderate",
+  "age": 30,
+  "sex": "male",
+  "heightCm": 175,
+  "weightKg": 80,
+  "estimatedTDEE": 2400,
+  "calorieAdjustment": 0,
+  "macroSplit": { "proteinPct": 30, "carbPct": 40, "fatPct": 30 }
+}

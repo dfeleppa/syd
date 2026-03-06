@@ -1,0 +1,231 @@
+[
+  {
+    "id": "chicken-breast",
+    "name": "Chicken breast",
+    "source": "mine",
+    "calories": 220,
+    "protein": 42,
+    "carbs": 0,
+    "fiber": 0,
+    "fat": 7,
+    "satFat": 1
+  },
+  {
+    "id": "white-rice",
+    "name": "White rice",
+    "source": "recent",
+    "calories": 130,
+    "protein": 2,
+    "carbs": 28,
+    "fat": 0
+  },
+  {
+    "id": "low-carb-buffalo-quesadilla",
+    "name": "Low Carb Buffalo Chicken Quesadilla",
+    "source": "mine",
+    "calories": 396,
+    "protein": 42,
+    "carbs": 21,
+    "fat": 16
+  },
+  {
+    "id": "quaker-oats-dry-1-2-cup",
+    "name": "Quaker Oats (dry, 1/2 cup)",
+    "source": "mine",
+    "calories": 150,
+    "protein": 5,
+    "carbs": 27,
+    "fat": 3
+  },
+  {
+    "id": "nonfat-greek-yogurt-vanilla-great-value",
+    "name": "Nonfat Greek Yogurt Vanilla (Great Value)",
+    "source": "mine",
+    "calories": 130,
+    "protein": 15,
+    "carbs": 18,
+    "fiber": 0,
+    "fat": 0,
+    "satFat": 0
+  },
+  {
+    "id": "ground-beef-88-12-costco-4oz",
+    "name": "Ground Beef 88/12 (Costco, 4 oz)",
+    "source": "mine",
+    "calories": 210,
+    "protein": 22,
+    "carbs": 0,
+    "fat": 13
+  },
+  {
+    "id": "martins-potato-roll-1-roll-53g",
+    "name": "Martins Potato Roll (1 roll, 53g)",
+    "source": "mine",
+    "calories": 130,
+    "protein": 6,
+    "carbs": 23,
+    "fat": 2
+  },
+  {
+    "id": "kraft-single-american-1-slice-19g",
+    "name": "Kraft Single American (1 slice, 19g)",
+    "source": "mine",
+    "calories": 50,
+    "protein": 3,
+    "carbs": 2,
+    "fat": 3.5
+  },
+  {
+    "id": "healthy-meals-direct-buffalo-chicken-bites-1-meal",
+    "name": "Healthy Meals Direct Buffalo Chicken Bites (1 meal)",
+    "source": "mine",
+    "calories": 341,
+    "protein": 39,
+    "carbs": 24,
+    "fat": 9
+  },
+  {
+    "id": "costco-chocolate-chip-cookie-1-cookie",
+    "name": "Costco Chocolate Chip Cookie (1 cookie)",
+    "source": "mine",
+    "calories": 210,
+    "protein": 3,
+    "carbs": 27,
+    "fat": 11
+  },
+  {
+    "id": "mixed-berries-1-2-cup",
+    "name": "Mixed Berries (1/2 cup)",
+    "source": "mine",
+    "calories": 40,
+    "protein": 0.5,
+    "carbs": 10.5,
+    "fat": 0
+  },
+  {
+    "id": "kerrygold-butter-1-tbsp",
+    "name": "Kerrygold Butter (1 tbsp)",
+    "source": "mine",
+    "calories": 100,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 11
+  },
+  {
+    "id": "yukon-gold-potatoes-cooked-300g",
+    "name": "Yukon Gold Potatoes (cooked, 300g)",
+    "source": "mine",
+    "calories": 260,
+    "protein": 4,
+    "carbs": 63,
+    "fat": 0.5
+  },
+  {
+    "id": "premier-protein-vanilla-shake-1-bottle",
+    "name": "Premier Protein Vanilla Shake (1 bottle)",
+    "source": "mine",
+    "calories": 160,
+    "protein": 30,
+    "carbs": 4,
+    "fat": 3
+  },
+  {
+    "id": "healthy-meals-direct-spaghetti-meatballs-1-meal",
+    "name": "Healthy Meals Direct Spaghetti & Meatballs (1 meal)",
+    "source": "mine",
+    "calories": 523,
+    "protein": 48,
+    "carbs": 49,
+    "fat": 15
+  },
+  {
+    "id": "costco-rotisserie-chicken-85g",
+    "name": "Costco Rotisserie Chicken (85g serving)",
+    "source": "mine",
+    "calories": 140,
+    "protein": 26,
+    "carbs": 0,
+    "fat": 3
+  },
+  {
+    "id": "costco-guacamole-2-tbsp",
+    "name": "Costco Guacamole (2 tbsp serving)",
+    "source": "mine",
+    "calories": 80,
+    "protein": 1,
+    "carbs": 3,
+    "fat": 8
+  },
+  {
+    "id": "jasmine-rice-142g",
+    "name": "Jasmine Rice (142g cooked)",
+    "source": "mine",
+    "calories": 170,
+    "protein": 3,
+    "carbs": 39,
+    "fat": 0
+  },
+  {
+    "id": "costco-mexican-cheese-28g",
+    "name": "Costco Mexican Cheese (28g serving)",
+    "source": "mine",
+    "calories": 110,
+    "protein": 6,
+    "carbs": 1,
+    "fat": 8
+  },
+  {
+    "id": "old-el-paso-taco-shells-2-shells",
+    "name": "Old El Paso Taco Shells (2 shells)",
+    "source": "mine",
+    "calories": 120,
+    "protein": 2,
+    "carbs": 17,
+    "fat": 5
+  },
+  {
+    "id": "podium-stroopwafel-1-waffel-30g",
+    "name": "Podium Stroopwafel (1 wafel, 30g)",
+    "source": "mine",
+    "calories": 135,
+    "protein": 6,
+    "carbs": 15,
+    "fat": 5
+  },
+  {
+    "id": "tortellini-w-steak",
+    "name": "Tortellini w/ Steak",
+    "source": "mine",
+    "calories": 546,
+    "protein": 53,
+    "carbs": 43,
+    "fat": 18
+  },
+  {
+    "id": "carb-balance-flour-tortilla",
+    "name": "Carb Balance Flour Tortilla",
+    "source": "mine",
+    "calories": 70,
+    "protein": 5,
+    "carbs": 4,
+    "fat": 3
+  },
+  {
+    "id": "nurri-ultra-filtered-milkshake-vanilla-11fl-oz",
+    "name": "Nurri Ultra-Filtered Milkshake Vanilla (1 can, 11 fl oz)",
+    "source": "mine",
+    "calories": 150,
+    "protein": 30,
+    "carbs": 2,
+    "fat": 2.5
+  },
+  {
+    "id": "healthy-meals-direct-protein-plus-baked-ziti-meatballs-1-meal",
+    "name": "Healthy Meals Direct Protein Plus Baked Ziti & Meatballs (1 meal)",
+    "source": "mine",
+    "calories": 474,
+    "protein": 56,
+    "carbs": 31,
+    "fat": 14
+  }
+]
