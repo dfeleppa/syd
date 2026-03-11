@@ -251,5 +251,29 @@
     "fat": 11,
     "satFat": 2,
     "sugar": 3
+  },
+  {
+    "id": "pancake-homemade-aunt-jemima-mix-4in-1-pancake",
+    "name": "Pancake (homemade, Aunt Jemima mix, ~4\" diameter)",
+    "source": "mine",
+    "calories": 90,
+    "protein": 2,
+    "carbs": 15,
+    "fiber": 0,
+    "fat": 3,
+    "satFat": 0.5,
+    "sugar": 3
+  },
+  {
+    "id": "log-cabin-syrup-1-tbsp",
+    "name": "Log Cabin Syrup (1 tbsp)",
+    "source": "mine",
+    "calories": 50,
+    "protein": 0,
+    "carbs": 13,
+    "fiber": 0,
+    "fat": 0,
+    "satFat": 0,
+    "sugar": 10
   }
 ]

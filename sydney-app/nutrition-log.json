@@ -149,8 +149,24 @@
         "id": "entry-1773191444774-6stdvf",
         "foodId": "kerrygold-butter-1-tbsp",
         "quantity": 0.5
+      },
+      {
+        "id": "entry-1773191482480-jcwwfo",
+        "foodId": "yukon-gold-potatoes-cooked-300g",
+        "quantity": 0.8
       }
     ],
-    "Snack": []
+    "Snack": [
+      {
+        "id": "entry-1773191584823-vye2eo",
+        "foodId": "pancake-homemade-aunt-jemima-mix-4in-1-pancake",
+        "quantity": 1
+      },
+      {
+        "id": "entry-1773191584825-18uqfk",
+        "foodId": "log-cabin-syrup-1-tbsp",
+        "quantity": 0.5
+      }
+    ]
   }
 }
