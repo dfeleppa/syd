@@ -129,7 +129,28 @@
         "quantity": 1
       }
     ],
-    "Dinner": [],
+    "Dinner": [
+      {
+        "id": "entry-1773191444774-q5oki8",
+        "foodId": "ground-beef-88-12-costco-4oz",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1773191444774-1dg4zg",
+        "foodId": "kraft-single-american-1-slice-19g",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1773191444774-6kcwm4",
+        "foodId": "martins-potato-roll-1-roll-53g",
+        "quantity": 2
+      },
+      {
+        "id": "entry-1773191444774-6stdvf",
+        "foodId": "kerrygold-butter-1-tbsp",
+        "quantity": 0.5
+      }
+    ],
     "Snack": []
   }
 }
