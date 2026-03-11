@@ -122,7 +122,13 @@
         "quantity": 1
       }
     ],
-    "Lunch": [],
+    "Lunch": [
+      {
+        "id": "entry-1773191381741-gtunli",
+        "foodId": "healthy-meals-direct-spinach-ravioli-meatballs-1-meal",
+        "quantity": 1
+      }
+    ],
     "Dinner": [],
     "Snack": []
   }
