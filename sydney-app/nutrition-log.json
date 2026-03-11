@@ -113,5 +113,17 @@
         "quantity": 1
       }
     ]
+  },
+  "2026-03-10": {
+    "Breakfast": [
+      {
+        "id": "entry-1773191273497-64dwna",
+        "foodId": "healthy-meals-direct-meatball-parm-flatbread-1-meal",
+        "quantity": 1
+      }
+    ],
+    "Lunch": [],
+    "Dinner": [],
+    "Snack": []
   }
 }
