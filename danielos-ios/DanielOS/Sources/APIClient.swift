@@ -152,6 +152,16 @@ struct APIClient {
     return try await send(req, as: FoodsResponse.self)
   }
 
+  func upsertFood(_ draft: FoodDraft) async throws -> FoodsResponse {
+    let url = try makeURL("foods")
+    var req = URLRequest(url: url)
+    req.httpMethod = "POST"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(draft)
+    return try await send(req, as: FoodsResponse.self)
+  }
+
   func nutritionLog(date: String) async throws -> NutritionLogResponse {
     let url = try makeURL("nutrition/log", query: [URLQueryItem(name: "date", value: date)])
     var req = URLRequest(url: url)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A9952AD4CF5957135EFF18E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35441C3DDAAA67BFB9D955 /* AppState.swift */; };
 		133E89888E5CC9408A39D7B6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD77E7DE6E2D1F9FF12441EE /* RootView.swift */; };
+		2CB74878816444164AA7AD47 /* FoodsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC859B459499A7B7942939 /* FoodsEditor.swift */; };
 		381909A19D50300525A09CA2 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01C49AF404AAAB9830AD20 /* DashboardView.swift */; };
 		6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C74C875D6A9790801DC84 /* APIClient.swift */; };
 		7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C59325EC211B55884094B0 /* NutritionView.swift */; };
@@ -30,6 +31,7 @@
 		2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionEntryEditor.swift; sourceTree = "<group>"; };
 		30FA571897C1CAE42857F1E7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
 		58AEDFCABAABF46C91E5CAFE /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		5FFC859B459499A7B7942939 /* FoodsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsEditor.swift; sourceTree = "<group>"; };
 		B27C74C875D6A9790801DC84 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CEDECF39A8FE5F3485DE0C12 /* DanielOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DanielOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB01C49AF404AAAB9830AD20 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				07FA4F73AA6F4044B42C3778 /* ConnectView.swift */,
 				DB01C49AF404AAAB9830AD20 /* DashboardView.swift */,
 				E0E3693809407A8107BD9D17 /* DateHelpers.swift */,
+				5FFC859B459499A7B7942939 /* FoodsEditor.swift */,
 				30FA571897C1CAE42857F1E7 /* FoodsView.swift */,
 				E1763014CA847ADF1359705A /* Keychain.swift */,
 				58AEDFCABAABF46C91E5CAFE /* NotesView.swift */,
@@ -138,6 +141,7 @@
 				E4BF47C25729961A8C87A763 /* ConnectView.swift in Sources */,
 				381909A19D50300525A09CA2 /* DashboardView.swift in Sources */,
 				DB786E02C6F8E00ADDABEFFA /* DateHelpers.swift in Sources */,
+				2CB74878816444164AA7AD47 /* FoodsEditor.swift in Sources */,
 				B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */,
 				97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */,
 				DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */,
