@@ -75,8 +75,8 @@ export function Sidebar() {
       <nav className="flex h-full flex-col gap-6">
         <div className="flex items-center justify-between">
           {!collapsed && (
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-              Business
+            <p className="text-xs font-semibold tracking-[0.12em] text-zinc-100">
+              DanielOS
             </p>
           )}
           <button
@@ -114,7 +114,7 @@ export function Sidebar() {
           {navLink("#", "Planner", "planner", { group: "personal", soon: true })}
           {navLink("/notes", "Notes", "notes", { group: "personal" })}
           {navLink("/nutrition", "Nutrition", "nutrition", { group: "personal" })}
-          {navLink("#", "Calendar", "calendar", { group: "personal", soon: true })}
+          {navLink("/calendar", "Calendar", "calendar", { group: "personal" })}
         </div>
 
         <div className="space-y-1">
