@@ -57,6 +57,21 @@ async function migrate(pool: ReturnType<typeof makePool>) {
         );
       `,
     },
+    {
+      id: "003_tasks",
+      sql: `
+        CREATE TABLE IF NOT EXISTS tasks (
+          id TEXT PRIMARY KEY,
+          title TEXT NOT NULL,
+          notes TEXT NOT NULL DEFAULT '',
+          status TEXT NOT NULL CHECK (status IN ('todo','doing','done')),
+          due_at TIMESTAMPTZ NULL,
+          priority INT NOT NULL DEFAULT 0,
+          created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+          updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+        );
+      `,
+    },
   ];
 
   // Ensure migrations table exists before we query it.
@@ -241,6 +256,113 @@ export async function buildServer() {
     );
 
     return { ok: true, notes: rows };
+  });
+
+  // Tasks
+  app.get("/tasks", async () => {
+    const { rows } = await pool.query(
+      `SELECT id, title, notes, status, due_at AS "dueAt", priority, created_at AS "createdAt", updated_at AS "updatedAt"
+       FROM tasks
+       ORDER BY (due_at IS NULL) ASC, due_at ASC, updated_at DESC`
+    );
+    return { tasks: rows };
+  });
+
+  const TaskUpsertSchema = z.object({
+    id: z.string().optional(),
+    title: z.string().min(1),
+    notes: z.string().optional().default(""),
+    status: z.enum(["todo", "doing", "done"]).optional().default("todo"),
+    dueAt: z.string().datetime().optional().nullable(),
+    priority: z.coerce.number().int().optional().default(0),
+  });
+
+  app.post("/tasks", async (req, reply) => {
+    const parsed = TaskUpsertSchema.safeParse(req.body);
+    if (!parsed.success) return reply.code(400).send({ error: parsed.error.flatten() });
+
+    const body = parsed.data;
+    const id = body.id || Math.random().toString(36).slice(2);
+
+    await pool.query(
+      `INSERT INTO tasks (id, title, notes, status, due_at, priority, created_at, updated_at)
+       VALUES ($1,$2,$3,$4,$5,$6, now(), now())
+       ON CONFLICT (id) DO UPDATE SET
+         title=excluded.title,
+         notes=excluded.notes,
+         status=excluded.status,
+         due_at=excluded.due_at,
+         priority=excluded.priority,
+         updated_at=now()`,
+      [id, body.title, body.notes, body.status, body.dueAt ?? null, body.priority]
+    );
+
+    const { rows } = await pool.query(
+      `SELECT id, title, notes, status, due_at AS "dueAt", priority, created_at AS "createdAt", updated_at AS "updatedAt"
+       FROM tasks
+       ORDER BY (due_at IS NULL) ASC, due_at ASC, updated_at DESC`
+    );
+
+    return { ok: true, id, tasks: rows };
+  });
+
+  const TaskPatchSchema = z.object({
+    title: z.string().min(1).optional(),
+    notes: z.string().optional(),
+    status: z.enum(["todo", "doing", "done"]).optional(),
+    dueAt: z.string().datetime().optional().nullable(),
+    priority: z.coerce.number().int().optional(),
+  });
+
+  app.patch("/tasks/:id", async (req, reply) => {
+    const id = (req.params as any)?.id as string | undefined;
+    if (!id) return reply.code(400).send({ error: "id is required" });
+
+    const parsed = TaskPatchSchema.safeParse(req.body);
+    if (!parsed.success) return reply.code(400).send({ error: parsed.error.flatten() });
+
+    const body = parsed.data;
+
+    // Fetch current
+    const cur = await pool.query(`SELECT * FROM tasks WHERE id=$1`, [id]);
+    if (!cur.rowCount) return reply.code(404).send({ error: "task not found" });
+    const c = cur.rows[0];
+
+    const next = {
+      title: body.title ?? c.title,
+      notes: body.notes ?? c.notes,
+      status: body.status ?? c.status,
+      due_at: body.dueAt === undefined ? c.due_at : body.dueAt,
+      priority: body.priority ?? c.priority,
+    };
+
+    await pool.query(
+      `UPDATE tasks SET title=$2, notes=$3, status=$4, due_at=$5, priority=$6, updated_at=now() WHERE id=$1`,
+      [id, next.title, next.notes, next.status, next.due_at ?? null, next.priority]
+    );
+
+    const { rows } = await pool.query(
+      `SELECT id, title, notes, status, due_at AS "dueAt", priority, created_at AS "createdAt", updated_at AS "updatedAt"
+       FROM tasks
+       ORDER BY (due_at IS NULL) ASC, due_at ASC, updated_at DESC`
+    );
+
+    return { ok: true, tasks: rows };
+  });
+
+  app.delete("/tasks/:id", async (req, reply) => {
+    const id = (req.params as any)?.id as string | undefined;
+    if (!id) return reply.code(400).send({ error: "id is required" });
+
+    await pool.query(`DELETE FROM tasks WHERE id=$1`, [id]);
+
+    const { rows } = await pool.query(
+      `SELECT id, title, notes, status, due_at AS "dueAt", priority, created_at AS "createdAt", updated_at AS "updatedAt"
+       FROM tasks
+       ORDER BY (due_at IS NULL) ASC, due_at ASC, updated_at DESC`
+    );
+
+    return { ok: true, tasks: rows };
   });
 
   // Nutrition
