@@ -59,39 +59,32 @@ export async function GET(req: NextRequest) {
       id_token?: string;
     };
 
-    // id_token is present when scopes include openid
-    if (!json.id_token) {
-      console.error("Google OAuth: missing id_token (ensure openid/email/profile scopes)");
+    // Fetch user identity from UserInfo endpoint using the access token.
+    // This works even if id_token is missing (some OAuth configs/scopes).
+    const userinfoRes = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
+      headers: {
+        Authorization: `Bearer ${json.access_token}`,
+      },
+    });
+
+    if (!userinfoRes.ok) {
+      console.error("Google OAuth: failed to fetch userinfo", await userinfoRes.text());
       return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
-    const parts = json.id_token.split(".");
-    if (parts.length < 2) {
-      console.error("Google OAuth: invalid id_token");
+    const userinfo = (await userinfoRes.json()) as { sub?: string; email?: string; name?: string };
+
+    if (!userinfo.sub || !userinfo.email) {
+      console.error("Google OAuth: userinfo missing sub/email");
       return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
-    // JWT parts are base64url encoded (NOT plain base64)
-    let payload: { sub?: string; email?: string; name?: string };
-    try {
-      const payloadRaw = Buffer.from(parts[1], "base64url").toString("utf8");
-      payload = JSON.parse(payloadRaw);
-    } catch (e) {
-      console.error("Google OAuth: failed to decode id_token payload", e);
+    if (!isEmailAllowed(userinfo.email)) {
+      console.error("Google OAuth: email not allowed", userinfo.email);
       return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
-    if (!payload.sub || !payload.email) {
-      console.error("Google OAuth: id_token missing sub/email");
-      return NextResponse.redirect(new URL("/auth/google", req.url));
-    }
-
-    if (!isEmailAllowed(payload.email)) {
-      console.error("Google OAuth: email not allowed", payload.email);
-      return NextResponse.redirect(new URL("/auth/google", req.url));
-    }
-
-    const sessionJwt = await signSession({ sub: payload.sub, email: payload.email, name: payload.name });
+    const sessionJwt = await signSession({ sub: userinfo.sub, email: userinfo.email, name: userinfo.name });
 
     const resp = NextResponse.redirect(new URL(next, req.url));
     resp.cookies.set(cookieName(), sessionJwt, {
