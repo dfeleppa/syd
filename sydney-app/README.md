@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sydney-app
 
-## Getting Started
+Web UI for DanielOS.
 
-First, run the development server:
+## Source of truth
+
+**Postgres + `danielos-server` is the source of truth.**
+
+This app intentionally does **not** use local JSON files as a database anymore.
+Legacy files (kept only as backup) are in `legacy-json/`.
+
+## Environment
+
+Create `.env.local` (do not commit) with:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+DANIELOS_SERVER_URL=https://daniels-mac-mini.tail166065.ts.net/
+DANIELOS_API_TOKEN=REPLACE_ME
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Notes:
+- The Next route handlers under `app/api/*` act as a **server-side proxy** to `danielos-server`.
+- Keeping the token server-side prevents exposing it to the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open:
+- http://localhost:3000/
+- http://localhost:3000/planner
+- http://localhost:3000/nutrition
