@@ -6,7 +6,7 @@ final class AppState: ObservableObject {
   @Published var token: String
 
   init() {
-    self.serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? "http://100.78.99.91:8787/"
+    self.serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? "https://daniels-mac-mini.tail166065.ts.net/"
     self.token = Keychain.get("apiToken") ?? ""
   }
 
