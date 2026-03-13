@@ -63,6 +63,27 @@ struct NutritionCopyRequest: Codable {
   let toMeal: String
 }
 
+struct NutritionAddRequest: Codable {
+  let date: String
+  let meal: String
+  let foodId: String
+  let quantity: Double
+}
+
+struct NutritionEntryPatchRequest: Codable {
+  let date: String
+  let id: String
+  let fromMeal: String?
+  let toMeal: String?
+  let quantity: Double?
+}
+
+struct NutritionEntryDeleteRequest: Codable {
+  let date: String
+  let id: String
+  let meal: String?
+}
+
 enum APIError: Error, LocalizedError {
   case invalidURL
   case unauthorized
@@ -146,6 +167,36 @@ struct APIClient {
     authed(&req)
     req.setValue("application/json", forHTTPHeaderField: "Content-Type")
     req.httpBody = try JSONEncoder().encode(NutritionCopyRequest(fromDate: fromDate, fromMeal: fromMeal.rawValue, toDate: toDate, toMeal: toMeal.rawValue))
+    return try await send(req, as: NutritionLogResponse.self)
+  }
+
+  func addNutritionEntry(date: String, meal: MealName, foodId: String, quantity: Double) async throws -> NutritionLogResponse {
+    let url = try makeURL("nutrition/log")
+    var req = URLRequest(url: url)
+    req.httpMethod = "POST"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(NutritionAddRequest(date: date, meal: meal.rawValue, foodId: foodId, quantity: quantity))
+    return try await send(req, as: NutritionLogResponse.self)
+  }
+
+  func patchNutritionEntry(date: String, id: String, fromMeal: MealName?, toMeal: MealName?, quantity: Double?) async throws -> NutritionLogResponse {
+    let url = try makeURL("nutrition/entry")
+    var req = URLRequest(url: url)
+    req.httpMethod = "PATCH"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(NutritionEntryPatchRequest(date: date, id: id, fromMeal: fromMeal?.rawValue, toMeal: toMeal?.rawValue, quantity: quantity))
+    return try await send(req, as: NutritionLogResponse.self)
+  }
+
+  func deleteNutritionEntry(date: String, id: String, meal: MealName?) async throws -> NutritionLogResponse {
+    let url = try makeURL("nutrition/entry")
+    var req = URLRequest(url: url)
+    req.httpMethod = "DELETE"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(NutritionEntryDeleteRequest(date: date, id: id, meal: meal?.rawValue))
     return try await send(req, as: NutritionLogResponse.self)
   }
 }

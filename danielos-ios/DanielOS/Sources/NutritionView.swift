@@ -20,6 +20,9 @@ struct NutritionView: View {
   @State private var isLoading: Bool = false
   @State private var errorText: String = ""
 
+  @State private var editorMeal: MealName? = nil
+  @State private var editorExisting: MealEntry? = nil
+
   private var dateString: String { DateHelpers.yyyyMMdd(selectedDate) }
 
   var body: some View {
@@ -54,18 +57,20 @@ struct NutritionView: View {
       }
 
       ForEach(MealName.allCases) { meal in
-        Section(meal.rawValue) {
+        Section {
           let entries = meals[meal.rawValue] ?? []
+
           if entries.isEmpty {
             Text("No items")
               .foregroundStyle(.secondary)
           }
+
           ForEach(entries) { entry in
             HStack(alignment: .firstTextBaseline) {
               VStack(alignment: .leading, spacing: 4) {
                 Text(foodsIndex[entry.foodId]?.name ?? entry.foodId)
                   .font(.body)
-                Text("Qty: \(entry.quantity, specifier: "%.1f")")
+                Text("Qty: \(String(format: "%.1f", entry.quantity))")
                   .font(.caption)
                   .foregroundStyle(.secondary)
               }
@@ -80,6 +85,33 @@ struct NutritionView: View {
                 }
               }
             }
+            .swipeActions {
+              Button(role: .destructive) {
+                Task { await delete(entry: entry, meal: meal) }
+              } label: {
+                Label("Delete", systemImage: "trash")
+              }
+
+              Button {
+                editorMeal = meal
+                editorExisting = entry
+              } label: {
+                Label("Edit", systemImage: "pencil")
+              }
+              .tint(.blue)
+            }
+          }
+        } header: {
+          HStack {
+            Text(meal.rawValue)
+            Spacer()
+            Button {
+              editorMeal = meal
+              editorExisting = nil
+            } label: {
+              Image(systemName: "plus.circle")
+            }
+            .disabled(isLoading)
           }
         }
       }
@@ -90,6 +122,23 @@ struct NutritionView: View {
             .foregroundStyle(.red)
         }
       }
+    }
+    .sheet(item: $editorMeal) { meal in
+      NutritionEntryEditor(
+        meal: meal,
+        foods: foods,
+        initialFoodId: editorExisting?.foodId,
+        initialQuantity: editorExisting?.quantity ?? 1,
+        onSave: { foodId, quantity in
+          Task {
+            if let existing = editorExisting {
+              await patch(entryId: existing.id, meal: meal, quantity: quantity)
+            } else {
+              await add(meal: meal, foodId: foodId, quantity: quantity)
+            }
+          }
+        }
+      )
     }
     .task {
       await loadFoodsIfNeeded()
@@ -141,6 +190,54 @@ struct NutritionView: View {
     do {
       let client = APIClient(baseURL: appState.serverURL, token: appState.token)
       let res = try await client.copyMeal(fromDate: fromDate, fromMeal: fromMeal, toDate: toDate, toMeal: toMeal)
+      meals = res.meals
+      totals = res.totals
+    } catch {
+      errorText = error.localizedDescription
+    }
+  }
+
+  @MainActor
+  private func add(meal: MealName, foodId: String, quantity: Double) async {
+    isLoading = true
+    defer { isLoading = false }
+    errorText = ""
+
+    do {
+      let client = APIClient(baseURL: appState.serverURL, token: appState.token)
+      let res = try await client.addNutritionEntry(date: dateString, meal: meal, foodId: foodId, quantity: quantity)
+      meals = res.meals
+      totals = res.totals
+    } catch {
+      errorText = error.localizedDescription
+    }
+  }
+
+  @MainActor
+  private func patch(entryId: String, meal: MealName, quantity: Double) async {
+    isLoading = true
+    defer { isLoading = false }
+    errorText = ""
+
+    do {
+      let client = APIClient(baseURL: appState.serverURL, token: appState.token)
+      let res = try await client.patchNutritionEntry(date: dateString, id: entryId, fromMeal: meal, toMeal: nil, quantity: quantity)
+      meals = res.meals
+      totals = res.totals
+    } catch {
+      errorText = error.localizedDescription
+    }
+  }
+
+  @MainActor
+  private func delete(entry: MealEntry, meal: MealName) async {
+    isLoading = true
+    defer { isLoading = false }
+    errorText = ""
+
+    do {
+      let client = APIClient(baseURL: appState.serverURL, token: appState.token)
+      let res = try await client.deleteNutritionEntry(date: dateString, id: entry.id, meal: meal)
       meals = res.meals
       totals = res.totals
     } catch {
