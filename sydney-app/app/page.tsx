@@ -99,10 +99,10 @@ export default function MissionPage() {
                   Agents & Tasks
                 </h2>
                 <Link
-                  href="#"
+                  href="/planner"
                   className="text-xs text-slate-700 hover:text-slate-900"
                 >
-                  Open Planner (soon)
+                  Open Planner
                 </Link>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-3 text-slate-900">
