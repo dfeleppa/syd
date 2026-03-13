@@ -43,6 +43,38 @@ struct NoteUpsertRequest: Codable {
   let content: String
 }
 
+struct TaskItem: Codable, Identifiable, Hashable {
+  let id: String
+  let title: String
+  let notes: String
+  let status: String
+  let dueAt: String?
+  let priority: Int
+  let createdAt: String
+  let updatedAt: String
+}
+
+struct TasksResponse: Codable {
+  let tasks: [TaskItem]
+}
+
+struct TaskUpsertRequest: Codable {
+  let id: String?
+  let title: String
+  let notes: String
+  let status: String
+  let dueAt: String?
+  let priority: Int
+}
+
+struct TaskPatchRequest: Codable {
+  let title: String?
+  let notes: String?
+  let status: String?
+  let dueAt: String?
+  let priority: Int?
+}
+
 enum MealName: String, Codable, CaseIterable, Identifiable {
   case breakfast = "Breakfast"
   case lunch = "Lunch"
@@ -177,6 +209,43 @@ struct APIClient {
     req.setValue("application/json", forHTTPHeaderField: "Content-Type")
     req.httpBody = try JSONEncoder().encode(draft)
     return try await send(req, as: FoodsResponse.self)
+  }
+
+  // Tasks
+  func tasks() async throws -> TasksResponse {
+    let url = try makeURL("tasks")
+    var req = URLRequest(url: url)
+    req.httpMethod = "GET"
+    authed(&req)
+    return try await send(req, as: TasksResponse.self)
+  }
+
+  func upsertTask(id: String?, title: String, notes: String, status: String, dueAt: String?, priority: Int) async throws -> TasksResponse {
+    let url = try makeURL("tasks")
+    var req = URLRequest(url: url)
+    req.httpMethod = "POST"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(TaskUpsertRequest(id: id, title: title, notes: notes, status: status, dueAt: dueAt, priority: priority))
+    return try await send(req, as: TasksResponse.self)
+  }
+
+  func patchTask(id: String, status: String? = nil, title: String? = nil, notes: String? = nil, dueAt: String? = nil, priority: Int? = nil) async throws -> TasksResponse {
+    let url = try makeURL("tasks/\(id)")
+    var req = URLRequest(url: url)
+    req.httpMethod = "PATCH"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(TaskPatchRequest(title: title, notes: notes, status: status, dueAt: dueAt, priority: priority))
+    return try await send(req, as: TasksResponse.self)
+  }
+
+  func deleteTask(id: String) async throws -> TasksResponse {
+    let url = try makeURL("tasks/\(id)")
+    var req = URLRequest(url: url)
+    req.httpMethod = "DELETE"
+    authed(&req)
+    return try await send(req, as: TasksResponse.self)
   }
 
   func nutritionLog(date: String) async throws -> NutritionLogResponse {

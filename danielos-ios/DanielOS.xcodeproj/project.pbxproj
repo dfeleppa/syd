@@ -23,6 +23,7 @@
 		DB786E02C6F8E00ADDABEFFA /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E3693809407A8107BD9D17 /* DateHelpers.swift */; };
 		DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AEDFCABAABF46C91E5CAFE /* NotesView.swift */; };
 		E4BF47C25729961A8C87A763 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FA4F73AA6F4044B42C3778 /* ConnectView.swift */; };
+		EDB4A2E3C3DA1C600A5AEC6B /* TaskEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179455A4E0A94EAC67102D11 /* TaskEditor.swift */; };
 		EE0DDAEE25772A6E2052BC54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028B0B643E3D78F0AD000523 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		028B0B643E3D78F0AD000523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07FA4F73AA6F4044B42C3778 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		179455A4E0A94EAC67102D11 /* TaskEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditor.swift; sourceTree = "<group>"; };
 		17C86F30AE75D7070F9916F8 /* NotesEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEditor.swift; sourceTree = "<group>"; };
 		25C59325EC211B55884094B0 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionEntryEditor.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				6A06B5DC45B2DFCD8F9DF7D2 /* PlannerView.swift */,
 				FD77E7DE6E2D1F9FF12441EE /* RootView.swift */,
 				11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */,
+				179455A4E0A94EAC67102D11 /* TaskEditor.swift */,
 			);
 			name = Sources;
 			path = DanielOS/Sources;
@@ -161,6 +164,7 @@
 				89B3DF0F21303DCBA204F47C /* PlannerView.swift in Sources */,
 				133E89888E5CC9408A39D7B6 /* RootView.swift in Sources */,
 				D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */,
+				EDB4A2E3C3DA1C600A5AEC6B /* TaskEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
