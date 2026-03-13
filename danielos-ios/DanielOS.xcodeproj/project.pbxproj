@@ -14,6 +14,7 @@
 		6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C74C875D6A9790801DC84 /* APIClient.swift */; };
 		7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C59325EC211B55884094B0 /* NutritionView.swift */; };
 		97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1763014CA847ADF1359705A /* Keychain.swift */; };
+		A6768BE743AA100D469BA730 /* NotesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C86F30AE75D7070F9916F8 /* NotesEditor.swift */; };
 		B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FA571897C1CAE42857F1E7 /* FoodsView.swift */; };
 		C51D536F0845CB5AF9B587A0 /* NutritionEntryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */; };
 		D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */; };
@@ -27,6 +28,7 @@
 		028B0B643E3D78F0AD000523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07FA4F73AA6F4044B42C3778 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		17C86F30AE75D7070F9916F8 /* NotesEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEditor.swift; sourceTree = "<group>"; };
 		25C59325EC211B55884094B0 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionEntryEditor.swift; sourceTree = "<group>"; };
 		30FA571897C1CAE42857F1E7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				5FFC859B459499A7B7942939 /* FoodsEditor.swift */,
 				30FA571897C1CAE42857F1E7 /* FoodsView.swift */,
 				E1763014CA847ADF1359705A /* Keychain.swift */,
+				17C86F30AE75D7070F9916F8 /* NotesEditor.swift */,
 				58AEDFCABAABF46C91E5CAFE /* NotesView.swift */,
 				2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */,
 				25C59325EC211B55884094B0 /* NutritionView.swift */,
@@ -144,6 +147,7 @@
 				2CB74878816444164AA7AD47 /* FoodsEditor.swift in Sources */,
 				B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */,
 				97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */,
+				A6768BE743AA100D469BA730 /* NotesEditor.swift in Sources */,
 				DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */,
 				C51D536F0845CB5AF9B587A0 /* NutritionEntryEditor.swift in Sources */,
 				7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */,

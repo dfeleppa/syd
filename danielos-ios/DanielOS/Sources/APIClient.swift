@@ -26,6 +26,23 @@ struct FoodsResponse: Codable {
   let mine: [FoodItem]
 }
 
+struct Note: Codable, Identifiable, Hashable {
+  let id: String
+  let title: String
+  let content: String
+  let updatedAt: String
+}
+
+struct NotesResponse: Codable {
+  let notes: [Note]
+}
+
+struct NoteUpsertRequest: Codable {
+  let id: String?
+  let title: String
+  let content: String
+}
+
 enum MealName: String, Codable, CaseIterable, Identifiable {
   case breakfast = "Breakfast"
   case lunch = "Lunch"
@@ -208,5 +225,23 @@ struct APIClient {
     req.setValue("application/json", forHTTPHeaderField: "Content-Type")
     req.httpBody = try JSONEncoder().encode(NutritionEntryDeleteRequest(date: date, id: id, meal: meal?.rawValue))
     return try await send(req, as: NutritionLogResponse.self)
+  }
+
+  func notes() async throws -> NotesResponse {
+    let url = try makeURL("notes")
+    var req = URLRequest(url: url)
+    req.httpMethod = "GET"
+    authed(&req)
+    return try await send(req, as: NotesResponse.self)
+  }
+
+  func upsertNote(id: String?, title: String, content: String) async throws -> NotesResponse {
+    let url = try makeURL("notes")
+    var req = URLRequest(url: url)
+    req.httpMethod = "POST"
+    authed(&req)
+    req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    req.httpBody = try JSONEncoder().encode(NoteUpsertRequest(id: id, title: title, content: content))
+    return try await send(req, as: NotesResponse.self)
   }
 }
