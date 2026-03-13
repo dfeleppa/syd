@@ -230,6 +230,19 @@ export async function buildServer() {
     return { ok: true, id: noteId, notes: rows };
   });
 
+  app.delete("/notes/:id", async (req, reply) => {
+    const id = (req.params as any)?.id as string | undefined;
+    if (!id) return reply.code(400).send({ error: "id is required" });
+
+    await pool.query(`DELETE FROM notes WHERE id=$1`, [id]);
+
+    const { rows } = await pool.query(
+      `SELECT id, title, content, updated_at AS "updatedAt" FROM notes ORDER BY updated_at DESC`
+    );
+
+    return { ok: true, notes: rows };
+  });
+
   // Nutrition
   type MealName = "Breakfast" | "Lunch" | "Dinner" | "Snack";
   type MealEntry = { id: string; foodId: string; quantity: number };
