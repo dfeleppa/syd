@@ -71,8 +71,15 @@ export async function GET(req: NextRequest) {
       return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
-    const payloadRaw = Buffer.from(parts[1], "base64").toString("utf8");
-    const payload = JSON.parse(payloadRaw) as { sub?: string; email?: string; name?: string };
+    // JWT parts are base64url encoded (NOT plain base64)
+    let payload: { sub?: string; email?: string; name?: string };
+    try {
+      const payloadRaw = Buffer.from(parts[1], "base64url").toString("utf8");
+      payload = JSON.parse(payloadRaw);
+    } catch (e) {
+      console.error("Google OAuth: failed to decode id_token payload", e);
+      return NextResponse.redirect(new URL("/auth/google", req.url));
+    }
 
     if (!payload.sub || !payload.email) {
       console.error("Google OAuth: id_token missing sub/email");
