@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeGoogleTokens, GoogleTokens } from "../../../../lib/googleTokens";
+import { writeGoogleTokens, GoogleTokens } from "../../../../../lib/googleTokens";
 
 const TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 

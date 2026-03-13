@@ -88,7 +88,7 @@ export async function POST(req: Request) {
     writeGoals(next);
 
     return NextResponse.json(next);
-  } catch {
+  } catch (e) {
     console.error("Failed to update goals path", e);
     return NextResponse.json({ error: "Failed to update" }, { status: 500 });
   }
