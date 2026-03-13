@@ -1,0 +1,27 @@
+name: DanielOS
+options:
+  bundleIdPrefix: ai.openclaw
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    PRODUCT_BUNDLE_IDENTIFIER: ai.openclaw.danielos
+    SWIFT_VERSION: 5.0
+packages: {}
+targets:
+  DanielOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: DanielOS/Sources
+    resources:
+      - path: DanielOS/Resources
+    settings:
+      base:
+        INFOPLIST_FILE: DanielOS/Resources/Info.plist
+        PRODUCT_NAME: DanielOS
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+        DEVELOPMENT_ASSET_PATHS: "DanielOS/Resources/Preview Content"
+    scheme:
+      testTargets: []
