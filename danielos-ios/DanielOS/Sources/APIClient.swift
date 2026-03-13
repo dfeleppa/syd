@@ -244,4 +244,12 @@ struct APIClient {
     req.httpBody = try JSONEncoder().encode(NoteUpsertRequest(id: id, title: title, content: content))
     return try await send(req, as: NotesResponse.self)
   }
+
+  func deleteNote(id: String) async throws -> NotesResponse {
+    let url = try makeURL("notes/\(id)")
+    var req = URLRequest(url: url)
+    req.httpMethod = "DELETE"
+    authed(&req)
+    return try await send(req, as: NotesResponse.self)
+  }
 }

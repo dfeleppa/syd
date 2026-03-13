@@ -46,6 +46,13 @@ struct NotesView: View {
                 .lineLimit(1)
             }
           }
+          .swipeActions {
+            Button(role: .destructive) {
+              Task { await delete(id: n.id) }
+            } label: {
+              Label("Delete", systemImage: "trash")
+            }
+          }
         }
       }
 
@@ -103,6 +110,21 @@ struct NotesView: View {
     do {
       let client = APIClient(baseURL: appState.serverURL, token: appState.token)
       let res = try await client.upsertNote(id: id, title: title, content: content)
+      notes = res.notes
+    } catch {
+      errorText = error.localizedDescription
+    }
+  }
+
+  @MainActor
+  private func delete(id: String) async {
+    isLoading = true
+    defer { isLoading = false }
+    errorText = ""
+
+    do {
+      let client = APIClient(baseURL: appState.serverURL, token: appState.token)
+      let res = try await client.deleteNote(id: id)
       notes = res.notes
     } catch {
       errorText = error.localizedDescription
