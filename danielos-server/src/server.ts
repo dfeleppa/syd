@@ -3,9 +3,9 @@ import cors from "@fastify/cors";
 import rateLimit from "@fastify/rate-limit";
 import { z } from "zod";
 
-import { loadEnv } from "./config";
-import { requireBearer } from "./auth";
-import { makePool } from "./db";
+import { loadEnv } from "./config.js";
+import { requireBearer } from "./auth.js";
+import { makePool } from "./db.js";
 
 async function migrate(pool: ReturnType<typeof makePool>) {
   // Minimal, inline migrations (keeps build simple; we can move to a file-based system later)
@@ -401,7 +401,7 @@ export async function buildServer() {
       const idx = (day[m] || []).findIndex((e) => e.id === id);
       if (idx !== -1) {
         foundMeal = m;
-        entry = day[m][idx];
+        entry = day[m][idx] ?? null;
         // remove from original meal if moving
         if (toMeal && toMeal !== m) {
           day[m].splice(idx, 1);

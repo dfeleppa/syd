@@ -1,5 +1,5 @@
 import type { FastifyRequest } from "fastify";
-import type { Env } from "./config";
+import type { Env } from "./config.js";
 
 export function requireBearer(req: FastifyRequest, env: Env) {
   const h = req.headers.authorization || "";
