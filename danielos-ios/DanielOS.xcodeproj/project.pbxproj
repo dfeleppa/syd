@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9952AD4CF5957135EFF18E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD35441C3DDAAA67BFB9D955 /* AppState.swift */; };
 		133E89888E5CC9408A39D7B6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD77E7DE6E2D1F9FF12441EE /* RootView.swift */; };
+		381909A19D50300525A09CA2 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01C49AF404AAAB9830AD20 /* DashboardView.swift */; };
 		6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C74C875D6A9790801DC84 /* APIClient.swift */; };
+		7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C59325EC211B55884094B0 /* NutritionView.swift */; };
 		97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1763014CA847ADF1359705A /* Keychain.swift */; };
+		B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FA571897C1CAE42857F1E7 /* FoodsView.swift */; };
 		D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */; };
+		DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AEDFCABAABF46C91E5CAFE /* NotesView.swift */; };
 		E4BF47C25729961A8C87A763 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FA4F73AA6F4044B42C3778 /* ConnectView.swift */; };
 		EE0DDAEE25772A6E2052BC54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028B0B643E3D78F0AD000523 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -19,8 +24,13 @@
 		028B0B643E3D78F0AD000523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07FA4F73AA6F4044B42C3778 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		25C59325EC211B55884094B0 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		30FA571897C1CAE42857F1E7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
+		58AEDFCABAABF46C91E5CAFE /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		B27C74C875D6A9790801DC84 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CEDECF39A8FE5F3485DE0C12 /* DanielOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DanielOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB01C49AF404AAAB9830AD20 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		DD35441C3DDAAA67BFB9D955 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E1763014CA847ADF1359705A /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		FD77E7DE6E2D1F9FF12441EE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,8 +49,13 @@
 			children = (
 				B27C74C875D6A9790801DC84 /* APIClient.swift */,
 				028B0B643E3D78F0AD000523 /* AppDelegate.swift */,
+				DD35441C3DDAAA67BFB9D955 /* AppState.swift */,
 				07FA4F73AA6F4044B42C3778 /* ConnectView.swift */,
+				DB01C49AF404AAAB9830AD20 /* DashboardView.swift */,
+				30FA571897C1CAE42857F1E7 /* FoodsView.swift */,
 				E1763014CA847ADF1359705A /* Keychain.swift */,
+				58AEDFCABAABF46C91E5CAFE /* NotesView.swift */,
+				25C59325EC211B55884094B0 /* NutritionView.swift */,
 				FD77E7DE6E2D1F9FF12441EE /* RootView.swift */,
 				11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */,
 			);
@@ -113,8 +128,13 @@
 			files = (
 				6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */,
 				EE0DDAEE25772A6E2052BC54 /* AppDelegate.swift in Sources */,
+				0A9952AD4CF5957135EFF18E /* AppState.swift in Sources */,
 				E4BF47C25729961A8C87A763 /* ConnectView.swift in Sources */,
+				381909A19D50300525A09CA2 /* DashboardView.swift in Sources */,
+				B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */,
 				97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */,
+				DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */,
+				7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */,
 				133E89888E5CC9408A39D7B6 /* RootView.swift in Sources */,
 				D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */,
 			);

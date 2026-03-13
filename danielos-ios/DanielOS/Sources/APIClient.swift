@@ -26,10 +26,22 @@ struct APIClient {
   var baseURL: String
   var token: String
 
-  func health() async throws -> HealthResponse {
-    guard let url = URL(string: baseURL)?.appending(path: "health") else {
-      throw APIError.invalidURL
+  private func makeURL(_ path: String) throws -> URL {
+    guard var url = URL(string: baseURL) else { throw APIError.invalidURL }
+    if !url.absoluteString.hasSuffix("/") {
+      url = URL(string: url.absoluteString + "/")!
     }
+    return url.appending(path: path)
+  }
+
+  private func authed(_ req: inout URLRequest) {
+    if !token.isEmpty {
+      req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    }
+  }
+
+  func health() async throws -> HealthResponse {
+    let url = try makeURL("health")
 
     var req = URLRequest(url: url)
     req.httpMethod = "GET"

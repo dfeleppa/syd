@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct ConnectView: View {
-  @State private var serverURL: String = UserDefaults.standard.string(forKey: "serverURL") ?? "http://100.78.99.91:8787/"
-  @State private var token: String = Keychain.get("apiToken") ?? ""
+  @EnvironmentObject private var appState: AppState
+
   @State private var statusText: String = ""
   @State private var isBusy: Bool = false
 
   var body: some View {
     Form {
       Section("Server") {
-        TextField("Base URL", text: $serverURL)
+        TextField("Base URL", text: $appState.serverURL)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
       }
 
       Section("Auth") {
-        SecureField("Bearer token", text: $token)
+        SecureField("Bearer token", text: $appState.token)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
 
@@ -39,17 +39,15 @@ struct ConnectView: View {
     isBusy = true
     defer { isBusy = false }
 
-    let cleaned = serverURL.trimmingCharacters(in: .whitespacesAndNewlines)
-    UserDefaults.standard.set(cleaned, forKey: "serverURL")
     do {
-      try Keychain.set(token, for: "apiToken")
+      try appState.save()
     } catch {
       statusText = "Failed to save token: \(error.localizedDescription)"
       return
     }
 
     do {
-      let client = APIClient(baseURL: cleaned, token: token)
+      let client = APIClient(baseURL: appState.serverURL, token: appState.token)
       let res = try await client.health()
       statusText = "OK ✅\n\(res.name)\n\(res.ts)"
     } catch {
