@@ -24,6 +24,13 @@
 .DS_Store
 *.pem
 
+# local-first JSON files (no longer source of truth; kept only as legacy/backup)
+foods.json
+notes.json
+nutrition-log.json
+nutrition-settings.json
+nutrition-goal.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*
