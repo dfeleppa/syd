@@ -4,10 +4,10 @@ struct DashboardView: View {
   var body: some View {
     List {
       Section("Quick Links") {
-        NavigationLink("Nutrition", destination: NutritionView())
+        NavigationLink("Planner", destination: PlannerView())
+        NavigationLink("Calendar", destination: CalendarView())
         NavigationLink("Notes", destination: NotesView())
-        NavigationLink("Foods", destination: FoodsView())
-        NavigationLink("Connect", destination: ConnectView())
+        NavigationLink("Nutrition", destination: NutritionView())
       }
 
       Section("Status") {

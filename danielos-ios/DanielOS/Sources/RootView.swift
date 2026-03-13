@@ -14,11 +14,19 @@ struct RootView: View {
       }
 
       NavigationStack {
-        NutritionView()
-          .navigationTitle("Nutrition")
+        PlannerView()
+          .navigationTitle("Planner")
       }
       .tabItem {
-        Label("Nutrition", systemImage: "fork.knife")
+        Label("Planner", systemImage: "checklist")
+      }
+
+      NavigationStack {
+        CalendarView()
+          .navigationTitle("Calendar")
+      }
+      .tabItem {
+        Label("Calendar", systemImage: "calendar")
       }
 
       NavigationStack {
@@ -30,19 +38,11 @@ struct RootView: View {
       }
 
       NavigationStack {
-        FoodsView()
-          .navigationTitle("Foods")
+        NutritionView()
+          .navigationTitle("Nutrition")
       }
       .tabItem {
-        Label("Foods", systemImage: "leaf")
-      }
-
-      NavigationStack {
-        ConnectView()
-          .navigationTitle("Connect")
-      }
-      .tabItem {
-        Label("Connect", systemImage: "link")
+        Label("Nutrition", systemImage: "fork.knife")
       }
     }
     .environmentObject(appState)

@@ -13,9 +13,11 @@
 		381909A19D50300525A09CA2 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01C49AF404AAAB9830AD20 /* DashboardView.swift */; };
 		6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C74C875D6A9790801DC84 /* APIClient.swift */; };
 		7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C59325EC211B55884094B0 /* NutritionView.swift */; };
+		89B3DF0F21303DCBA204F47C /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A06B5DC45B2DFCD8F9DF7D2 /* PlannerView.swift */; };
 		97CF498190DF7D8F6BDDF4D6 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1763014CA847ADF1359705A /* Keychain.swift */; };
 		A6768BE743AA100D469BA730 /* NotesEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C86F30AE75D7070F9916F8 /* NotesEditor.swift */; };
 		B0C2B6FF40B3F963959DCCED /* FoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FA571897C1CAE42857F1E7 /* FoodsView.swift */; };
+		B9F755FDF8C95F0C6182C675 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB97FDC787E959799655A /* CalendarView.swift */; };
 		C51D536F0845CB5AF9B587A0 /* NutritionEntryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */; };
 		D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */; };
 		DB786E02C6F8E00ADDABEFFA /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E3693809407A8107BD9D17 /* DateHelpers.swift */; };
@@ -34,6 +36,8 @@
 		30FA571897C1CAE42857F1E7 /* FoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsView.swift; sourceTree = "<group>"; };
 		58AEDFCABAABF46C91E5CAFE /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		5FFC859B459499A7B7942939 /* FoodsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsEditor.swift; sourceTree = "<group>"; };
+		6A06B5DC45B2DFCD8F9DF7D2 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		6E9CB97FDC787E959799655A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		B27C74C875D6A9790801DC84 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CEDECF39A8FE5F3485DE0C12 /* DanielOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DanielOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB01C49AF404AAAB9830AD20 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 				B27C74C875D6A9790801DC84 /* APIClient.swift */,
 				028B0B643E3D78F0AD000523 /* AppDelegate.swift */,
 				DD35441C3DDAAA67BFB9D955 /* AppState.swift */,
+				6E9CB97FDC787E959799655A /* CalendarView.swift */,
 				07FA4F73AA6F4044B42C3778 /* ConnectView.swift */,
 				DB01C49AF404AAAB9830AD20 /* DashboardView.swift */,
 				E0E3693809407A8107BD9D17 /* DateHelpers.swift */,
@@ -68,6 +73,7 @@
 				58AEDFCABAABF46C91E5CAFE /* NotesView.swift */,
 				2B95C75554C27A07F6474843 /* NutritionEntryEditor.swift */,
 				25C59325EC211B55884094B0 /* NutritionView.swift */,
+				6A06B5DC45B2DFCD8F9DF7D2 /* PlannerView.swift */,
 				FD77E7DE6E2D1F9FF12441EE /* RootView.swift */,
 				11F4BFDAC7A9BCB13B400EEF /* SceneDelegate.swift */,
 			);
@@ -141,6 +147,7 @@
 				6FB8BF457FF777EAB16D3689 /* APIClient.swift in Sources */,
 				EE0DDAEE25772A6E2052BC54 /* AppDelegate.swift in Sources */,
 				0A9952AD4CF5957135EFF18E /* AppState.swift in Sources */,
+				B9F755FDF8C95F0C6182C675 /* CalendarView.swift in Sources */,
 				E4BF47C25729961A8C87A763 /* ConnectView.swift in Sources */,
 				381909A19D50300525A09CA2 /* DashboardView.swift in Sources */,
 				DB786E02C6F8E00ADDABEFFA /* DateHelpers.swift in Sources */,
@@ -151,6 +158,7 @@
 				DFE7584E3FDE98BBEF41C180 /* NotesView.swift in Sources */,
 				C51D536F0845CB5AF9B587A0 /* NutritionEntryEditor.swift in Sources */,
 				7FB9923AA0BEB3EC77AAC518 /* NutritionView.swift in Sources */,
+				89B3DF0F21303DCBA204F47C /* PlannerView.swift in Sources */,
 				133E89888E5CC9408A39D7B6 /* RootView.swift in Sources */,
 				D059F8D3ECEDD1C0CE0E1DCF /* SceneDelegate.swift in Sources */,
 			);
