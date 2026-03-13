@@ -54,6 +54,16 @@ struct NutritionView: View {
           Task { await copy(fromMeal: .lunch, toMeal: .lunch) }
         }
         .disabled(isLoading)
+
+        Button("Copy yesterday’s Dinner → today") {
+          Task { await copy(fromMeal: .dinner, toMeal: .dinner) }
+        }
+        .disabled(isLoading)
+
+        Button("Copy yesterday’s Snack → today") {
+          Task { await copy(fromMeal: .snack, toMeal: .snack) }
+        }
+        .disabled(isLoading)
       }
 
       ForEach(MealName.allCases) { meal in
