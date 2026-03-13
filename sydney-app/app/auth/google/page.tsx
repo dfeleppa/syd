@@ -10,7 +10,8 @@ export default function GoogleAuthPage() {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("/api/auth/google/url");
+      const next = new URLSearchParams(window.location.search).get("next") || "/";
+      const res = await fetch(`/api/auth/google/url?next=${encodeURIComponent(next)}`);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data.error || "Failed to get Google auth URL");

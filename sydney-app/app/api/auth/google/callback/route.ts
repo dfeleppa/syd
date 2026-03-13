@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeGoogleTokens, GoogleTokens } from "../../../../../lib/googleTokens";
+
+import { cookieName, isEmailAllowed, signSession } from "../../../../../lib/auth";
 
 const TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 
@@ -7,14 +8,15 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const code = url.searchParams.get("code");
   const error = url.searchParams.get("error");
+  const next = url.searchParams.get("state") || "/";
 
   if (error) {
     console.error("Google OAuth error", error);
-    return NextResponse.redirect("/calendar");
+    return NextResponse.redirect(new URL("/auth/google", req.url));
   }
 
   if (!code) {
-    return NextResponse.redirect("/calendar");
+    return NextResponse.redirect(new URL("/auth/google", req.url));
   }
 
   const clientId = process.env.GOOGLE_CLIENT_ID;
@@ -23,7 +25,7 @@ export async function GET(req: NextRequest) {
 
   if (!clientId || !clientSecret || !redirectUri) {
     console.error("Missing Google OAuth env vars");
-    return NextResponse.redirect("/calendar");
+    return NextResponse.redirect(new URL("/auth/google", req.url));
   }
 
   const body = new URLSearchParams({
@@ -45,7 +47,7 @@ export async function GET(req: NextRequest) {
 
     if (!res.ok) {
       console.error("Failed to exchange code for tokens", await res.text());
-      return NextResponse.redirect("/calendar");
+      return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
     const json = (await res.json()) as {
@@ -54,27 +56,48 @@ export async function GET(req: NextRequest) {
       expires_in: number;
       scope?: string;
       token_type?: string;
+      id_token?: string;
     };
 
-    const now = Date.now();
-    const expiryDate = now + json.expires_in * 1000;
-
-    const tokens: GoogleTokens = {
-      accessToken: json.access_token,
-      refreshToken: json.refresh_token || "",
-      expiryDate,
-      scope: json.scope,
-      tokenType: json.token_type,
-    };
-
-    if (!tokens.refreshToken) {
-      console.warn("Google OAuth: no refresh_token returned; may need to revoke access and re-consent");
+    // id_token is present when scopes include openid
+    if (!json.id_token) {
+      console.error("Google OAuth: missing id_token (ensure openid/email/profile scopes)");
+      return NextResponse.redirect(new URL("/auth/google", req.url));
     }
 
-    writeGoogleTokens(tokens);
+    const parts = json.id_token.split(".");
+    if (parts.length < 2) {
+      console.error("Google OAuth: invalid id_token");
+      return NextResponse.redirect(new URL("/auth/google", req.url));
+    }
+
+    const payloadRaw = Buffer.from(parts[1], "base64").toString("utf8");
+    const payload = JSON.parse(payloadRaw) as { sub?: string; email?: string; name?: string };
+
+    if (!payload.sub || !payload.email) {
+      console.error("Google OAuth: id_token missing sub/email");
+      return NextResponse.redirect(new URL("/auth/google", req.url));
+    }
+
+    if (!isEmailAllowed(payload.email)) {
+      console.error("Google OAuth: email not allowed", payload.email);
+      return NextResponse.redirect(new URL("/auth/google", req.url));
+    }
+
+    const sessionJwt = await signSession({ sub: payload.sub, email: payload.email, name: payload.name });
+
+    const resp = NextResponse.redirect(new URL(next, req.url));
+    resp.cookies.set(cookieName(), sessionJwt, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+
+    return resp;
   } catch (err) {
     console.error("Error during Google OAuth callback", err);
+    return NextResponse.redirect(new URL("/auth/google", req.url));
   }
-
-  return NextResponse.redirect("/calendar");
 }
